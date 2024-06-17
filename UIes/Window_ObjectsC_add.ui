@@ -1,0 +1,1046 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog_Objects_add</class>
+ <widget class="QDialog" name="Dialog_Objects_add">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>876</width>
+    <height>872</height>
+   </rect>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
+  </property>
+  <property name="acceptDrops">
+   <bool>false</bool>
+  </property>
+  <property name="windowTitle">
+   <string>Добавление объекта клиента</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>830</y>
+     <width>175</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QFrame" name="frame_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>811</width>
+     <height>791</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QComboBox" name="cb_obj_type">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>130</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="placeholderText">
+     <string>Тип объекта</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Комната</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Квартира</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Частный дом</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Земельный объект</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Гараж</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Коммерческая недвижимость</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QDoubleSpinBox" name="sp_obj_square">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>230</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="maximum">
+     <double>9999.989999999999782</double>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="sp_obj_rooms">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>230</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>228</y>
+      <width>113</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Площадь объекта</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>230</y>
+      <width>113</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Кол-во комнат</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cb_obj_dtype">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>180</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="placeholderText">
+     <string>Тип предложения</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Аренда</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Продажа</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPlainTextEdit" name="te_obj_desc">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>350</y>
+      <width>591</width>
+      <height>83</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="placeholderText">
+     <string>Описание...</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>460</y>
+      <width>260</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Доп. свойства (необязательно):</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>500</y>
+      <width>146</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Кол-во ванных комнат:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>540</y>
+      <width>35</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Этаж:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>690</y>
+      <width>141</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Площадь зем.участка:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>570</y>
+      <width>96</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Год постройки:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>650</y>
+      <width>102</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;</string>
+    </property>
+    <property name="text">
+     <string>Площадь кухни:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>600</y>
+      <width>111</width>
+      <height>18</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Высота потолков:</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="sp_obj_bathrooms">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>490</y>
+      <width>52</width>
+      <height>32</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="sp_obj_floor">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>530</y>
+      <width>52</width>
+      <height>32</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cb_obj_landplot">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>640</y>
+      <width>241</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="text">
+     <string>Земельный участок</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cb_obj_garage">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>600</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="text">
+     <string>Гараж:</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cb_obj_basement">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>549</y>
+      <width>111</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="text">
+     <string>Подвал:</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cb_obj_garbagech">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>549</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="text">
+     <string>Мусоропровод:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cb_obj_btype">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>490</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="placeholderText">
+     <string>Тип застройки:</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Монолит</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Кирпич</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Панели</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QDoubleSpinBox" name="sp_obj_kitchensquare">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>640</y>
+      <width>71</width>
+      <height>32</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDateEdit" name="dtpicker_obj_buildyear">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>570</y>
+      <width>61</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="displayFormat">
+     <string>yyyy</string>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="sp_obj_ldsquare">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>690</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QDoubleSpinBox" name="sp_obj_cheight">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>600</y>
+      <width>55</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="accelerated">
+     <bool>false</bool>
+    </property>
+    <property name="decimals">
+     <number>2</number>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cb_obj_accidentrate">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>640</y>
+      <width>181</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="text">
+     <string>Аварийность:</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="te_obj_repair">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>680</y>
+      <width>211</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="tabletTracking">
+     <bool>false</bool>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::DefaultContextMenu</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhNone</set>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Sunken</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
+    <property name="tabChangesFocus">
+     <bool>false</bool>
+    </property>
+    <property name="undoRedoEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="overwriteMode">
+     <bool>false</bool>
+    </property>
+    <property name="acceptRichText">
+     <bool>true</bool>
+    </property>
+    <property name="placeholderText">
+     <string>Ремонт</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cb_obj_logic">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>549</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
+    </property>
+    <property name="text">
+     <string>Балкон</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cb_obj_needAP">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>450</y>
+      <width>401</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Отключить</string>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>409</width>
+      <height>39</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Source Sans Pro</family>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Добавить новый объект клиента</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="sp_obj_parking">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>590</y>
+      <width>52</width>
+      <height>32</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>485</x>
+      <y>600</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Кол-во ванных комнат:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="te_obj_cadastral">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>80</y>
+      <width>271</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Кадастровый номер</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="te_obj_owner">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>80</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>ID владельца объекта</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="te_obj_name">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>130</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Наименование объекта</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="te_obj_address">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>290</y>
+      <width>371</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Расположение объекта</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="te_obj_price">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>290</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Цена объекта</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QTextEdit" name="te_filespath">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>760</y>
+     <width>251</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="tabletTracking">
+    <bool>false</bool>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::DefaultContextMenu</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="inputMethodHints">
+    <set>Qt::ImhNone</set>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Sunken</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAsNeeded</enum>
+   </property>
+   <property name="tabChangesFocus">
+    <bool>false</bool>
+   </property>
+   <property name="undoRedoEnabled">
+    <bool>true</bool>
+   </property>
+   <property name="overwriteMode">
+    <bool>false</bool>
+   </property>
+   <property name="acceptRichText">
+    <bool>true</bool>
+   </property>
+   <property name="placeholderText">
+    <string>Путь к файлам</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bt_upload_files">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>760</y>
+     <width>181</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>Загрузить фото (макс. 15)</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Dialog_Objects_add</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Dialog_Objects_add</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>te_obj_repair</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>415</x>
+     <y>672</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cb_obj_accidentrate</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>534</x>
+     <y>639</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cb_obj_landplot</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>384</x>
+     <y>639</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cb_obj_garage</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>342</x>
+     <y>599</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cb_obj_garbagech</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>560</x>
+     <y>559</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cb_obj_basement</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>437</x>
+     <y>559</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cb_obj_logic</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>344</x>
+     <y>559</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>cb_obj_btype</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>420</x>
+     <y>505</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sp_obj_ldsquare</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>225</x>
+     <y>660</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sp_obj_kitchensquare</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>185</x>
+     <y>625</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sp_obj_cheight</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>187</x>
+     <y>599</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>dtpicker_obj_buildyear</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>170</x>
+     <y>570</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sp_obj_floor</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>105</x>
+     <y>535</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sp_obj_bathrooms</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>225</x>
+     <y>505</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cb_obj_needAP</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>bt_upload_files</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>353</x>
+     <y>470</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>370</x>
+     <y>715</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

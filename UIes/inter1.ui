@@ -1,0 +1,3748 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1548</width>
+    <height>847</height>
+   </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="windowTitle">
+   <string>Real Estate Management Tool</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="inputMethodHints">
+   <set>Qt::ImhDigitsOnly</set>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonIconOnly</enum>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
+  <property name="dockNestingEnabled">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(25, 35, 35);
+color: rgb(245, 245, 245);</string>
+   </property>
+   <widget class="QTableWidget" name="tableWidget_main">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>90</y>
+      <width>801</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(250, 250, 250);
+color: black;</string>
+    </property>
+    <property name="alternatingRowColors">
+     <bool>false</bool>
+    </property>
+    <property name="showGrid">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>100</y>
+      <width>261</width>
+      <height>651</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(35, 45, 45);
+color: rgb(245, 245, 245);
+border-radius: 25;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="bt_services">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>130</y>
+       <width>47</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Source Sans Pro</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: 12pt &quot;Source Sans Pro&quot;;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Услуги</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_meetings">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>100</y>
+       <width>58</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Source Sans Pro</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: 12pt &quot;Source Sans Pro&quot;;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Встречи</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_deals">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>300</y>
+       <width>51</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Source Sans Pro</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: 12pt &quot;Source Sans Pro&quot;;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Сделки</string>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_objectsC">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>390</y>
+       <width>131</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Source Sans Pro</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: 12pt &quot;Source Sans Pro&quot;;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Объекты клиентов</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_guests">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>450</y>
+       <width>41</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Source Sans Pro</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: 12pt &quot;Source Sans Pro&quot;;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Гости</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_impressions">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>420</y>
+       <width>61</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Source Sans Pro</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: 12pt &quot;Source Sans Pro&quot;;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Показы</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_objects">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>240</y>
+       <width>161</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Source Sans Pro</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: 12pt &quot;Source Sans Pro&quot;;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Объекты для клиентов</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_representatives">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>270</y>
+       <width>177</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Source Sans Pro</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: 12pt &quot;Source Sans Pro&quot;;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Представители объектов</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_requests">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>210</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Source Sans Pro</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: 12pt &quot;Source Sans Pro&quot;;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Запросы клиентов</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_clients">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>70</y>
+       <width>63</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Source Sans Pro</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+border-radius: 0;
+font: 12pt &quot;Source Sans Pro&quot;;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Клиенты</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_tablesview">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>510</y>
+       <width>134</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Source Sans Pro</family>
+       <pointsize>16</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: 16pt &quot;Source Sans Pro&quot;;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Обзор таблиц</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_navCommon">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>30</y>
+       <width>63</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: 16pt &quot;Source Sans Pro&quot;;
+text-align: center;
+</string>
+     </property>
+     <property name="text">
+      <string>Общее</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_navREfind">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>180</y>
+       <width>199</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: 16pt &quot;Source Sans Pro&quot;;
+</string>
+     </property>
+     <property name="text">
+      <string>Поиск недвижимости</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_navfindCustomer">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>360</y>
+       <width>168</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: 16pt &quot;Source Sans Pro&quot;;
+</string>
+     </property>
+     <property name="text">
+      <string>Поиск покупателя</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="bt_tablesview_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>570</y>
+       <width>134</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Source Sans Pro</family>
+       <pointsize>16</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: 16pt &quot;Source Sans Pro&quot;;
+
+</string>
+     </property>
+     <property name="text">
+      <string>Настройки</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QComboBox" name="cb_column">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>480</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(35, 45, 45);
+color: rgb(245, 245, 245);
+text-align: center;</string>
+    </property>
+    <property name="currentText">
+     <string/>
+    </property>
+    <property name="currentIndex">
+     <number>-1</number>
+    </property>
+    <property name="placeholderText">
+     <string>Столбец</string>
+    </property>
+    <property name="duplicatesEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_find">
+    <property name="geometry">
+     <rect>
+      <x>1000</x>
+      <y>480</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(64, 64, 64);
+color: rgb(245, 245, 245);
+border-radius: 24pt</string>
+    </property>
+    <property name="text">
+     <string>Поиск</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="te_search">
+    <property name="geometry">
+     <rect>
+      <x>282</x>
+      <y>480</y>
+      <width>441</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Поиск по столбцу...</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="cb_exactmatch">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>480</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(64, 64 ,64);</string>
+    </property>
+    <property name="text">
+     <string>Точное совпадение</string>
+    </property>
+    <property name="tristate">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame_status">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>850</y>
+      <width>1491</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(255, 170, 0, 255), stop:1 rgba(255, 64, 255, 255));</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QStackedWidget" name="stackWid_Actions">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>560</y>
+      <width>791</width>
+      <height>231</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(35, 45, 45);</string>
+    </property>
+    <property name="currentIndex">
+     <number>9</number>
+    </property>
+    <widget class="QWidget" name="page_serviceHist">
+     <widget class="QFrame" name="frame_servicesHist">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>751</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="bt_servicesHistAdd">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>251</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Внести услугу</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_meetings">
+     <widget class="QFrame" name="frame_meetings">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>751</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="bt_meetingsAdd">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Назначить встречу</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_meetingsAdd_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>130</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Отменить встречу</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_meetingsAdd_3">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>10</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Узнать свободные записи</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_meetingsAdd_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>70</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Перенести встречу</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_deals">
+     <widget class="QFrame" name="frame_deals">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>721</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="bt_deals_add">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>231</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Добавить сделку</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_dealsAdd_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>231</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Завершить сделку</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_dealsAdd_3">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>20</y>
+         <width>231</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Отменить сделку</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_dealsAdd_4">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>90</y>
+         <width>231</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Отметить готовность сделки</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_clients">
+     <widget class="QFrame" name="frame_clients">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>721</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="bt_clientsReg">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Регистрация клиента</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_clientsReg_10">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>20</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Выгрузить контактные данные</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_requests">
+     <widget class="QFrame" name="frame_clients_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>721</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="bt_requests_add">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Добавить запрос</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_objects">
+     <widget class="QFrame" name="frame_clients_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>721</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="bt_objects_add">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Добавить объект</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_objects_show_homes">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Вывести дома</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_objects_show_appartments">
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>80</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Вывести квартиры</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_objects_import">
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>20</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Импортировать объект</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_representatives">
+     <widget class="QFrame" name="frame_clients_4">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>30</y>
+        <width>721</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="bt_representatives_add">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Добавить представителя</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_objectsC">
+     <widget class="QFrame" name="frame_clients_5">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>721</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="bt_clientsReg_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Добавить объект клиента</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_clientsReg_14">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>20</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Объекты на сдачу</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_clientsReg_15">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>80</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Объекты на продажу</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_guests">
+     <widget class="QFrame" name="frame_clients_6">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>721</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="bt_guests_add">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Добавить гостя</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_guests_showBlacklist">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>20</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Чёрный список</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_guests_contacts_export">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Выгрузить контактные данные</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_guests_blacklist_addrem">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>80</y>
+         <width>271</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Добавить/Удалить из чёрного списка</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_impressions">
+     <widget class="QFrame" name="frame_clients_7">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>721</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: transparent;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QPushButton" name="bt_impressions_add">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>10</y>
+         <width>201</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Планирование показов</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_clientsReg_8">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>10</y>
+         <width>201</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Отмена показа</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="bt_freeImpressionsTommorrow">
+       <property name="geometry">
+        <rect>
+         <x>230</x>
+         <y>10</y>
+         <width>201</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255,255,255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Свободные записи на завтра</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_agreements"/>
+   </widget>
+   <widget class="QStackedWidget" name="stackWid_Properties">
+    <property name="geometry">
+     <rect>
+      <x>1100</x>
+      <y>120</y>
+      <width>351</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(35, 45, 45);</string>
+    </property>
+    <property name="currentIndex">
+     <number>10</number>
+    </property>
+    <widget class="QWidget" name="page_ServicesHist_props">
+     <widget class="QFrame" name="frame_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>331</width>
+        <height>291</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLineEdit" name="tb_servicesHist_id">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>20</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_servicesHist_client">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>181</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_servicesHist_service">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>180</y>
+         <width>181</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_servicesHist_cost">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>240</y>
+         <width>211</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="inputMask">
+        <string>999999</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_lname">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>45</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Клиент</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>85</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Дата и время</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_patronymic">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>160</y>
+         <width>41</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Услуга</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_phone">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>220</y>
+         <width>68</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Стоимость</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>20</y>
+         <width>12</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>id</string>
+       </property>
+      </widget>
+      <widget class="QDateTimeEdit" name="dtpicker_servicesHist_datetime">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>110</y>
+         <width>194</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="displayFormat">
+        <string>dd.MM.yyyy</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_Meetings_props">
+     <widget class="QFrame" name="frame_Meetings_props">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>331</width>
+        <height>321</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLineEdit" name="tb_meetings_id">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>20</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_meetings_name">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>181</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_meetings_desc">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>240</y>
+         <width>301</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_lname_6">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>151</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Наименование встречи</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_6">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>85</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Дата и время</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_patronymic_6">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>160</y>
+         <width>58</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Статус</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_phone_6">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>220</y>
+         <width>107</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Описание</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>20</y>
+         <width>12</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>id</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cb_meetings_status">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>180</y>
+         <width>191</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="editable">
+        <bool>false</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>Завершено</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Ожидается</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Отменено</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QDateTimeEdit" name="dtpicker_meetings_datetime">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>110</y>
+         <width>194</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="displayFormat">
+        <string>dd-MM-yyyy HH:mm</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_Deals_props">
+     <widget class="QFrame" name="frame_4">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>331</width>
+        <height>351</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLineEdit" name="tb_deals_id">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>20</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_deals_name">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>301</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_deals_object">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>210</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_lname_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>70</y>
+         <width>143</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Наименование сделки</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>0</y>
+         <width>85</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Дата и время</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_patronymic_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>130</y>
+         <width>71</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Тип сделки</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_phone_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>190</y>
+         <width>46</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Объект</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>20</y>
+         <width>12</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>id</string>
+       </property>
+      </widget>
+      <widget class="QDateTimeEdit" name="dtpicker_deals_datetime">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>141</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cb_deals_type">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>150</y>
+         <width>191</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string>Покупка</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Продажа</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Аренда</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLineEdit" name="tb_deals_cost">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>210</y>
+         <width>151</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="inputMask">
+        <string>9999999999</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_phone_7">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>190</y>
+         <width>90</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Сумма сделки</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_deals_cpercent">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>260</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_phone_8">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>240</y>
+         <width>121</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Процент риелтора</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_phone_9">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>240</y>
+         <width>121</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Плата риелтору</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_deals_csum">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>260</y>
+         <width>151</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="inputMask">
+        <string>99999999</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_phone_10">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>300</y>
+         <width>51</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Клиент</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_deals_client">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>320</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_phone_11">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>300</y>
+         <width>51</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Статус</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_deals_status">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>320</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_Clients">
+     <widget class="QFrame" name="frame_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>331</width>
+        <height>441</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLineEdit" name="tb_client_id">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>20</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_client_lname">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_client_fname">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>110</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_client_patronymic">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>170</y>
+         <width>171</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_client_phone">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>280</y>
+         <width>211</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_client_email">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>340</y>
+         <width>281</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_lname_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>58</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Фамилия:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>58</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Имя</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_patronymic_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>150</y>
+         <width>58</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Отчество</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_phone_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>260</y>
+         <width>107</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Номер телефона</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_email_4">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>320</y>
+         <width>131</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Электронная почта</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>20</y>
+         <width>12</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>id</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_client_address">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>400</y>
+         <width>311</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_address">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>380</y>
+         <width>131</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Адрес проживания</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_client_passport">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>220</y>
+         <width>141</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_lname_12">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>200</y>
+         <width>58</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Паспорт</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_Requests_props">
+     <widget class="QFrame" name="frame_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>331</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLineEdit" name="tb_req_id">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>20</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_req_client">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>181</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_req_details">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>291</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_lname_7">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>45</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Клиент</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_7">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>45</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Запрос</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>20</y>
+         <width>12</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>id</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_objects_props"/>
+    <widget class="QWidget" name="page_representatives_props">
+     <widget class="QFrame" name="frame_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>331</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLineEdit" name="tb_representatives_id">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>20</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_representatives_name">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>181</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_representatives_phone">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>191</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_lname_8">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>31</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ФИО</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_8">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>100</y>
+         <width>107</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Номер телефона</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_8">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>20</y>
+         <width>12</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>id</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_representatives_email">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>190</y>
+         <width>181</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_9">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>170</y>
+         <width>165</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Адрес электронной почты</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_representatives_website">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>240</y>
+         <width>231</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_10">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>220</y>
+         <width>56</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Веб-сайт</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_11">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>270</y>
+         <width>56</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Telegram</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_12">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>270</y>
+         <width>17</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>VK</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_representatives_telegram">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>290</y>
+         <width>111</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_representatives_vk">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>290</y>
+         <width>111</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_objectsc_props">
+     <widget class="QFrame" name="frame_9">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>331</width>
+        <height>501</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLineEdit" name="tb_objects_id">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>20</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_objects_name">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>291</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_objects_representative">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>191</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_lname_9">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>150</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Наименование объекта</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_13">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>100</y>
+         <width>96</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Представитель</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_9">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>20</y>
+         <width>12</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>id</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_14">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>150</y>
+         <width>165</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Вторичное жилье</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_15">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>150</y>
+         <width>77</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Тип объекта</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cb_objects_second">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>170</y>
+         <width>81</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Да</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Нет</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="cb_objects_type">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>170</y>
+         <width>131</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Комната</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Квартира</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Частный дом</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Земельный участок</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Гараж</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Коммерческая недвижимость</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="cb_objects_dtype">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>230</y>
+         <width>221</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Продажа</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Аренда</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_fname_16">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>210</y>
+         <width>113</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Тип предложения</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_objects_square">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>290</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_17">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>270</y>
+         <width>59</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Площадь</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_25">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>270</y>
+         <width>96</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Кол-во комнат</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="sb_objects_rooms">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>290</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="wrapping">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_26">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>370</y>
+         <width>92</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Расположение</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_objects_address">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>390</y>
+         <width>311</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_27">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>420</y>
+         <width>63</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Описание</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_objects_addprops">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>280</y>
+         <width>61</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_29">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>270</y>
+         <width>59</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Хар-ки</string>
+       </property>
+      </widget>
+      <widget class="QPlainTextEdit" name="tb_objects_desc">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>440</y>
+         <width>311</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_objects_price">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>340</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_19">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>320</y>
+         <width>59</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Цена</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_guests_props">
+     <widget class="QFrame" name="frame_7">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>331</width>
+        <height>261</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLineEdit" name="tb_guests_id">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>20</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_guests_fullname">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>40</y>
+         <width>181</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_guests_phone">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>191</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_lname_10">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>31</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>ФИО</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_18">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>100</y>
+         <width>107</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Номер телефона</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_10">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>20</y>
+         <width>12</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>id</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dtpicker_guests_added">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>160</y>
+         <width>181</width>
+         <height>32</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_20">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>170</y>
+         <width>110</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Дата добавления</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="cb_guests_blacklist">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>210</y>
+         <width>125</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="text">
+        <string>Чёрный список</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_Impressions">
+     <widget class="QFrame" name="frame_8">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>331</width>
+        <height>311</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLineEdit" name="tb_impressions_id">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>20</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_imressions_object">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>70</y>
+         <width>191</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_21">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>46</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Объект</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_11">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>20</y>
+         <width>12</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>id</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_impressions_guests">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>130</y>
+         <width>191</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dtpicker_impressions_datetime">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>180</y>
+         <width>155</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="displayFormat">
+        <string>dd.MM.yyyy HH:mm</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_23">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>190</y>
+         <width>85</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Дата и время</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_24">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>110</y>
+         <width>34</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Гость</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="cb_impressions_finished">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>240</y>
+         <width>100</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::RightToLeft</enum>
+       </property>
+       <property name="text">
+        <string>Завершено</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_Objectsc">
+     <widget class="QFrame" name="frame_10">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>331</width>
+        <height>551</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLineEdit" name="tb_objectsc_id">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>20</y>
+         <width>41</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_objectsc_name">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>291</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_objectsc_owner">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>191</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_client_lname_11">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>150</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Наименование объекта</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_22">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>100</y>
+         <width>96</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Владелец</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_12">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>20</y>
+         <width>12</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>id</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_30">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>150</y>
+         <width>77</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Тип объекта</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cb_objectsc_type">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>170</y>
+         <width>131</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Комната</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Квартира</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Частный дом</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Земельный участок</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Гараж</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Коммерческая недвижимость</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="cb_objectsc_dtype">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>320</y>
+         <width>221</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Продажа</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Аренда</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_fname_31">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>300</y>
+         <width>113</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Тип предложения</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_objectsc_square">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>180</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_32">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>160</y>
+         <width>59</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Площадь</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_33">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>160</y>
+         <width>96</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Кол-во комнат</string>
+       </property>
+      </widget>
+      <widget class="QSpinBox" name="sb_objectsc_rooms">
+       <property name="geometry">
+        <rect>
+         <x>240</x>
+         <y>180</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="wrapping">
+        <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_34">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>420</y>
+         <width>92</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Адрес</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_objectsc_address">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>440</y>
+         <width>311</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_35">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>470</y>
+         <width>63</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Описание</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_36">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>360</y>
+         <width>59</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Статус</string>
+       </property>
+      </widget>
+      <widget class="QPlainTextEdit" name="tb_objectsc_desc">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>490</y>
+         <width>311</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_objectsc_price">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>250</y>
+         <width>161</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="inputMethodHints">
+        <set>Qt::ImhNone</set>
+       </property>
+       <property name="inputMask">
+        <string>999999999</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_37">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>230</y>
+         <width>59</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Цена</string>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dtpicker_objectsc_addate">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>250</y>
+         <width>110</width>
+         <height>32</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_fname_38">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>230</y>
+         <width>110</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Дата добавления</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="cb_objectsc_status">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>380</y>
+         <width>221</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Актуально</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Продано</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_fname_28">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>70</y>
+         <width>128</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Кадастровый номер</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="tb_objectsc_cadastral">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>90</y>
+         <width>191</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="lb_propertiesTitle">
+    <property name="geometry">
+     <rect>
+      <x>1100</x>
+      <y>90</y>
+      <width>103</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: bold 18pt &quot;Source Sans Pro&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Свойства</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lb_Actions">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>520</y>
+      <width>106</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(248, 248, 248);
+background-color: transparent;
+font: bold 18pt &quot;Source Sans Pro&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string>Действия</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_delete">
+    <property name="geometry">
+     <rect>
+      <x>1370</x>
+      <y>710</y>
+      <width>81</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+
+background-color: rgb(214, 23, 90)</string>
+    </property>
+    <property name="text">
+     <string>Удалить</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_copy">
+    <property name="geometry">
+     <rect>
+      <x>1110</x>
+      <y>710</y>
+      <width>161</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string>Копировать</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_edit">
+    <property name="geometry">
+     <rect>
+      <x>1280</x>
+      <y>710</y>
+      <width>88</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string>Изменить</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

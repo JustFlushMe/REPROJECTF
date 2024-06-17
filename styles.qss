@@ -1,0 +1,42 @@
+QWidget{
+    background-color: #2f2f2f;
+
+}
+
+#centralwidget{
+    background-color: rgb(25, 35, 35);
+    color: rgb(245, 245, 245);
+}
+
+#frame{
+    background-color: rgb(35, 45, 45);
+    color: rgb(245, 245, 245);
+    border-radius: 25;
+}
+
+
+QPushButton{
+	border-style: solid;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-left-color: transparent;
+	border-bottom-color: transparent;
+	border-style: solid;
+	color: #a9b7c6;
+	background-color: rgb(25, 35, 35);
+}
+
+
+QPushButton:hover{
+	border-style: solid;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-left-color: transparent;
+	border-bottom-color: #7800ff;
+	border-bottom-width: 1px;
+	border-style: solid;
+	color: #FFFFFF;
+	padding-bottom: 1px;
+	background-color: rgb(255, 255, 255);
+}
+

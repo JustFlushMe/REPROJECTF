@@ -1,0 +1,386 @@
+/*  Основа  */
+QWidget{
+    background-color: rgb(40, 42, 47);
+    color: rgb(250, 250, 250);
+}
+
+QLineEdit, QPlainTextEdit{
+    background-color: white;
+    color: rgb(5, 5, 5);
+    border-radius: 5px;
+}
+
+QLabel{
+    background-color: transparent;
+}
+
+#label{
+    font: 14pt "Source Sans Pro";
+}
+
+QHeaderView::section {
+    background-color: white;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    border: 0px solid black;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox{
+    background-color: rgb(250, 250, 250);
+    border-radius: 10px;
+    color: rgb(148, 141, 138);
+}
+
+QComboBox::drop-down {
+    border-radius: 10px; /* Ширина стрелки выпадающего списка */
+}
+
+QComboBox QAbstractItemView {
+    background-color: rgb(250, 250, 250);
+    border-radius: 10px;
+    color: rgb(255, 10, 10);
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/icons/down_arrow.png);
+}
+
+QComboBox::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}
+
+QCheckBox
+{
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    spacing: 10px;
+    font: 12pt "Source Sans Pro";
+}
+
+QCheckBox::indicator{
+    width: 25px;
+    height: 25px;
+}
+QCheckBox::indicator:unchecked {
+    image: url(Icons/CheckBox_checked.png);
+}
+
+QCheckBox::indicator:checked {
+    image: url(Icons/CheckBox_unchecked.png);
+}
+
+
+#bt_find, #bt_edit, #bt_enter, #bt_objectsc_showPhotos{
+    background-color: #8e31ff;
+    color: rgb(255, 255, 255);
+}
+
+
+/*  Кнопка удаления     */
+#bt_delete{
+    background-color: #e70075;
+
+    color: rgb(255, 255, 255);
+}
+
+/*  Выбор столбца для поиска   */
+cb_column{
+    background-color: rgb(35, 45, 45);
+    color: rgb(245, 245, 245);
+    text-align: center;
+}
+
+
+/*  Окно навигации  */
+
+#label_navCommon, #label_navREfind, #label_navfindCustomer{
+    color: rgb(248, 248, 248);
+    background-color: transparent;
+    font: bold 18pt "Source Sans Pro";
+}
+
+#bt_clients, #bt_deals, #bt_deals_c, #bt_guests, #bt_impressions, #bt_meetings, #bt_objects, #bt_objectsC, #bt_representatives, #bt_requests, #bt_services{
+    color: rgb(248, 248, 248);
+    background-color: transparent;
+    border-radius: 0;
+    font: 14pt "Source Sans Pro";
+    text-align: left;
+    icon-size: 25px 25px;
+
+
+}
+
+#frame_statusbar{
+    background-color: rgb(0, 155, 0);
+    height: 150px;
+}
+
+#lb_statusbar{
+    font: medium 10pt "Source Sans Pro";
+}
+
+#bt_enter_settings{
+    background-color: transparent;
+    text-align: center;
+}
+
+#bt_enter_settings:hover{
+    background-color: transparent;
+}
+
+#bt_clients{
+    icon: url(Icons/Person_white.png);
+}
+
+#bt_meetings{
+    icon: url(Icons/Meeting-Persons_White.png);
+
+}
+
+#bt_services{
+    icon: url(Icons/Person_chat_white.png);
+}
+
+#bt_requests{
+    icon: url(Icons/Requests.png);
+}
+
+#bt_objectsC{
+    icon: url(Icons/ObjectC.png);
+}
+
+#bt_objects{
+    icon: url(Icons/Objects.png);
+}
+
+#bt_representatives{
+    icon: url(Icons/Representatives.png);
+}
+
+#bt_impressions{
+    icon: url(Icons/Impressions.png);
+}
+
+#bt_guests{
+    icon: url(Icons/Guests.png);
+}
+
+#bt_deals_c{
+    icon: url(Icons/DealsC.png);
+}
+
+#bt_deals{
+    icon: url(Icons/Deals.png);
+}
+
+#bt_tablesview{
+    color: rgb(248, 248, 248);
+    background-color: transparent;
+    font: 16pt "Source Sans Pro";
+
+}
+
+#bt_tablesview{
+    color: rgb(248, 248, 248);
+    background-color: transparent;
+    font: 16pt "Source Sans Pro";
+
+}
+
+#bt_tablesview{
+    color: rgb(248, 248, 248);
+    background-color: transparent;
+    font: 16pt "Source Sans Pro";
+
+}
+
+
+
+/*///////////////////////////////////*/
+
+/* надпись СВОЙСТВА */
+#lb_propertiesTitle{
+    font: bold 18pt "Source Sans Pro";
+}
+
+/* окно СВОЙСТВ*/
+#page_ServicesHist_props, #page_Meetings_props, #page_Deals_props, #page_Clients_props,
+#page_Requests_props, #page_objects_props, #page_representatives_props, #page_objectsc_props,
+#page_guests_props, #page_Impressions_props, #page_Objectsc_props{
+    background-color: rgb(30, 32, 37);
+    border-radius: 15;
+/*    border: 2px solid white;*/
+}
+
+#frame_servicesHist_props, #frame_Meetings_props, #frame_Deals_props, #frame_Clients_props,
+#frame_Requests_props, #frame_representatives_props, #frame_objectsc_props, #frame_guests_props,
+#frame_Impressions_props, #frame_Objectsc_props, #frame_enter{
+    background-color: rgb(30, 32, 37);
+    border-radius: 15;
+
+}
+
+/*///////////////////////////////////*/
+
+/* надпись Действия */
+#lb_Actions{
+    color: rgb(248, 248, 248);
+    background-color: transparent;
+    font: bold 18pt "Source Sans Pro";
+
+}
+
+/* окно Действий*/
+#page_serviceHist, #page_meetings, #page_deals, #page_clients, #page_requests, #page_objects, #page_representatives, #page_objectsC, #page_guests, #page_impressions{
+    background-color: rgb(30, 32, 37);
+
+}
+
+/* фрейм внутри окна Действий*/
+#frame_servicesHist, #frame_meetings, #frame_deals, #frame_clients, #frame_requests, #frame_objects, #frame_representatives, #frame_objectsC, #frame_guests, #frame_impressions{
+    background-color: rgb(30, 32, 37);
+    border: 0px;
+
+}
+
+
+
+#bt_meetingsAdd{
+    background-color: rgb(255, 255, 255);
+}
+
+
+/*  Общее   */
+
+#frame{
+    background-color: rgb(30, 32, 37);
+    color: rgb(245, 245, 245);
+    border-radius: 25;
+}
+
+QDateTimeEdit{
+    background-color: white;
+    color: rgb(15, 15, 15);
+    border-radius: 10px;
+}
+
+QDateTimeEdit::down-button {
+    width: 20px;
+    height: 20px;
+    color: black;
+    border-radius: 5px;
+    image: url(Icons/ArrowDown.png);
+}
+
+QDateTimeEdit::up-button {
+    width: 20px;
+    height: 20px;
+    color: black;
+    border-radius: 5px;
+    image: url(Icons/ArrowUp.png);
+}
+
+QSpinBox {
+    color: black;
+    background-color: white;
+}
+
+QSpinBox::up-button {
+    background-color: white; /* Цвет фона кнопок */
+    color: black; /* Цвет текста кнопок */
+    image: url(Icons/ArrowUp.png);
+}
+
+QSpinBox::down-button{
+    image: url(Icons/ArrowDown.png);
+    background-color: white; /* Цвет фона кнопок */
+    color: black; /* Цвет текста кнопок */
+}
+
+QSpinBox::up-button:hover, QSpinBox::down-button:hover {
+    background-color: #2980b9; /* Цвет фона кнопок при наведении */
+    border: 1px solid #2980b9; /* Граница кнопок при наведении */
+}
+
+
+
+QPushButton{
+	border-style: solid;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-left-color: transparent;
+	border-bottom-color: transparent;
+	border-style: solid;
+	border-bottom-width: 2px;
+
+	border-radius: 10px;
+	color: #a9b7c6;
+	background-color: rgb(25, 35, 35);
+
+}
+
+
+QPushButton:hover{
+	border-style: solid;
+
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-left-width: 2px;
+    border-bottom-width: 2px;
+
+	border-style: solid;
+	color: #FFFFFF;
+}
+
+#tableWidget_main{
+    border-radius: 5px;
+    alternate-background-color: #d5b3ff;
+    selection-background-color: #ff00bd;
+}
+
+/* Выделение строки в tablewidget*/
+#tableWidget_main::item:selected {
+    background-color: #8e31ff;
+}
+
+
+/*///////////////////////////////////////////////*/
+/* ДОБАВЛЕНИЕ КЛИЕНТА*/
+
+#bt_clientsReg, #bt_exportContacts, #bt_requests_add, #bt_objects_add, #bt_objects_import, #bt_objects_show_homes,
+#bt_objects_show_appartments, #bt_representatives_add, #bt_objects_add, #bt_objects_import, #bt_objects_appartments,
+#bt_objects_show_homes, #bt_guests_add, #bt_guests_showBlacklist, #bt_guests_contacts_export,
+#bt_guests_blacklist_addrem, #bt_impressions_add, #bt_freeImpressionsTommorrow, #bt_impressions_cancel,
+#bt_servicesHistAdd, #bt_meetingsAdd, #bt_meetingsEdit, #bt_meetingsCancel, #bt_meetingsFree, #bt_deals_add,
+#bt_dealsCancel, #bt_dealSetReady, #bt_dealFinish, #bt_objectsc_add, #bt_objectsc_onlyrent, #bt_objectsc_onlysale{
+   background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0.522, stop:0.558824 rgba(136, 0, 255, 255), stop:1 rgba(233, 207, 255, 255));
+   color: White;
+   font: 16pt "Source Sans Pro";
+   icon-size: 50px 50px;
+   text-align: left;
+
+
+}
+
+#bt_clientsReg{
+    icon: url(Icons/RegClient.png);
+}
+
+#bt_exportContacts{
+    icon: url(Icons/ExportContacts.png);
+}
+
+/*///////////////////////////////////////////////*/
