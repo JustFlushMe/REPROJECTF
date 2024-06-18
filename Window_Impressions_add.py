@@ -74,6 +74,7 @@ class Ui_Dialog_Impressions_add(object):
         Dialog_Impressions_add.setWindowTitle(_translate("Dialog_Impressions_add", "Планирование показов"))
         self.te_imp_object.setPlaceholderText(_translate("Dialog_Impressions_add", "ID Объекта"))
         self.te_imp_guest.setPlaceholderText(_translate("Dialog_Impressions_add", "ID Гостя"))
+        self.dtpicker_imp_datetime.setDisplayFormat(_translate("Dialog_Impressions_add", "yyyy-MM-dd HH:mm"))
         self.label.setText(_translate("Dialog_Impressions_add", "Запланировать показ"))
 
 

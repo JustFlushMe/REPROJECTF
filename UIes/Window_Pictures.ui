@@ -67,6 +67,19 @@
     <string>&gt;&gt;</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="bt_delphoto">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>460</y>
+     <width>101</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Удалить фото</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

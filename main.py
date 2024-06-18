@@ -1,10 +1,15 @@
 import io
+import json
 import sys
 import datetime
+import time
+
 import DataSets
 import psycopg2
 import pyperclip
 import openpyxl
+import importlib
+import pandas as pd
 # 09.06.2024 - Отчеты, фото объектов
 from PyQt6 import QtWidgets
 from PyQt6.QtWidgets import QMessageBox
@@ -12,14 +17,17 @@ from PyQt6.QtGui import QImage
 from psycopg2 import Binary
 from PIL import Image
 from PyQt6.QtGui import QPixmap
+
+import connect_config
 from DataSets import *
 from UserInterface import Ui_MainWindow
 from PyQt6.QtWidgets import *
 from PyQt6.QtWidgets import QFileDialog
 from PyQt6.QtCore import QDateTime
-from datetime import datetime
-
-
+from datetime import datetime, date
+import connect_config
+import pickle
+from PyQt6.QtCore import QTimer
 from Window_Client_registration import Ui_Dialog_Clients_registration
 from Window_Impressions_add import Ui_Dialog_Impressions_add
 from Window_Objects_add import Ui_Dialog_Objects_add
@@ -32,14 +40,99 @@ from Window_Deals_c_add import Ui_Dialog_Deals_c_add
 from Window_Requests_add import Ui_Dialog_Requests_add
 from Window_Guests_add import Ui_Dialog_Guests_add
 from Window_Pictures import Ui_Dialog_pictures
-from Window_Enter import Ui_Enter
 
+class AuthorizationWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Авторизация")
+
+        self.ip_label = QLabel("IP Адрес сервера:")
+        self.ip_input = QLineEdit()
+        self.port_label = QLabel("Порт сервера")
+        self.port_input = QLineEdit()
+        self.db_label = QLabel("Название БД")
+        self.db_input = QLineEdit()
+
+        self.username_label = QLabel("Имя пользователя:")
+        self.username_input = QLineEdit()
+
+        self.password_label = QLabel("Пароль:")
+        self.password_input = QLineEdit()
+        self.password_input.setEchoMode(QLineEdit.EchoMode.Password)
+
+        self.login_button = QPushButton("Войти")
+        self.login_button.clicked.connect(self.login)
+
+        layout = QVBoxLayout()
+        layout.addWidget(self.ip_label)
+        layout.addWidget(self.ip_input)
+        self.ip_input.setText(connect_config.host)
+        layout.addWidget(self.port_label)
+        layout.addWidget(self.port_input)
+        self.port_input.setText(connect_config.port)
+        layout.addWidget(self.db_label)
+        layout.addWidget(self.db_input)
+        self.db_input.setText(connect_config.dbname)
+        layout.addWidget(self.username_label)
+        layout.addWidget(self.username_input)
+        self.username_input.setText(connect_config.user)
+        layout.addWidget(self.password_label)
+        layout.addWidget(self.password_input)
+        self.password_input.setText(connect_config.password)
+        layout.addWidget(self.login_button)
+        self.setLayout(layout)
+
+
+
+        # try:                user = 'postgres',
+        #                 password = 'password',
+        #                 host = '172.17.0.2',
+        #                 port = '5432'
+        #     connection = psycopg2.connect(
+        #
+        #     )
+        #     connection.close()
+        #
+        # except()
+
+    def login(self):
+        try:
+            with open ('connect_config.py', 'w') as file:
+                file.write(
+f'''dbname = '{self.db_input.text()}'
+user = '{self.username_input.text()}'
+password = '{self.password_input.text()}'
+host = '{self.ip_input.text()}'
+port = '{self.port_input.text()}' ''')
+
+            database = self.db_input.text()
+            user = self.username_input.text()
+            password = self.password_input.text()
+            host = self.ip_input.text()
+            port = self.port_input.text()
+
+            # Здесь можно добавить логику проверки имени пользователя и пароля
+            self.connection = psycopg2.connect(
+                dbname = database,
+                user = user,
+                password = password,
+                host = host,
+                port = port,
+            )
+
+            cur = self.connection.cursor()
+            window.show()
+
+            auth_window.close()
+
+        except psycopg2.Error as e:
+            MainWindow.show_errorMessage(self, 'Ошибкаа', 'Ошибка')
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        self.setFixedSize(2000, 850)
+        self.setFixedSize(1700, 850)
 
         self.rowValues = None #
         self.ui = Ui_MainWindow()
@@ -79,17 +172,46 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # Обработка событий панели свойств
         self.ui.tableWidget_main.clicked.connect(self.GetDataFromCurrentRow)
-        self.ui.bt_copy.clicked.connect(self.ExportPicturesFromDB)
         self.ui.bt_edit.clicked.connect(lambda: self.EditCurrentRow())
         self.ui.bt_delete.clicked.connect(self.DeleteDataFromCurrentRow)
+        self.ui.bt_objectsc_showPhotos.clicked.connect(self.ExportPicturesFromDB)
+
+        self.ui.bt_notifications.clicked.connect(lambda: self.showTodaysImpressions())
 
         # Обработка событий виджетов
         self.ui.bt_guests_contacts_export.clicked.connect(self.ExportGuestContacts)
         self.ui.bt_guests_showBlacklist.clicked.connect(self.ShowGuestsBlacklist)
         self.ui.bt_guests_blacklist_addrem.clicked.connect(self.AddRemGuestToBlackList)
 
+    def checkTodaysImpressions(self):
+        today = datetime.now()
+        today = today.replace(hour=0, minute=0, second=0, microsecond=0)
+        today_end = today.replace(hour=23, minute=59, second=59)
+        print(today)
+        result = self.SendQueryWithOneRow(f"SELECT COUNT(imp_id) FROM Impressions WHERE imp_datetime > '{today}' AND imp_datetime < '{today_end}'")
+        self.ui.bt_notifications.setText(f'Встреч на сегодня: {result}')
+
+    def showTodaysImpressions(self):
+        self.eventHandler_bt_impressions()
+        self.ui.tableWidget_main.setRowCount(0)
+
+        today = datetime.now()
+        today = today.replace(hour=0, minute=0, second=0, microsecond=0)
+        today_end = today.replace(hour=23, minute=59, second=59)
+
+        result = self.SendQueryWithSomeRow(f"SELECT * FROM Impressions WHERE imp_datetime > '{today}' AND imp_datetime < '{today_end}'")
+        for row_number, row_data in enumerate(result):
+            self.ui.tableWidget_main.insertRow(row_number)
+            for column_nmber, data in enumerate(row_data):
+                self.ui.tableWidget_main.setItem(row_number, column_nmber, QTableWidgetItem(str(data)))
+
+
+
+
 
     def eventHandler_bt_servicesHist(self):
+        self.ui.stackWid_Properties.setFixedHeight(300)
+        self.markButtons(430)
         self.Mark_TableWidget(TableWidgetContent.ServicesHist.__len__(), TableWidgetContent.ServicesHist)
         self.Show_Table('ServicesHist')
         self.ui.stackWid_Actions.setCurrentIndex(0)
@@ -99,6 +221,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_meetings(self):
+        self.ui.stackWid_Properties.setFixedHeight(350)
+        self.markButtons(480)
         self.Mark_TableWidget(TableWidgetContent.Meetings.__len__(), TableWidgetContent.Meetings)
         self.Show_Table('Meetings')
         self.ui.stackWid_Actions.setCurrentIndex(1)
@@ -108,6 +232,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_deals(self):
+        self.ui.stackWid_Properties.setFixedHeight(400)
+        self.markButtons(530)
         self.Mark_TableWidget(TableWidgetContent.Deals.__len__(), TableWidgetContent.Deals)
         self.ui.lb_deals_cbuyer.setText('Клиент')
         self.Show_Table('Deals')
@@ -118,6 +244,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_deals_c(self):
+        self.ui.stackWid_Properties.setFixedHeight(400)
+        self.markButtons(530)
         self.Mark_TableWidget(TableWidgetContent.Deals_c.__len__(), TableWidgetContent.Deals_c)
         self.Show_Table('Deals_c')
         self.ui.lb_deals_cbuyer.setText('Покупатель')
@@ -126,8 +254,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ui.cb_column.clear()
         self.ui.cb_column.addItems(TableWidgetContent.Deals_c)
 
+    def markButtons(self, height):
+        self.ui.bt_copy.move(self.ui.bt_copy.x(), height)
+        self.ui.bt_edit.move(self.ui.bt_edit.x(), height)
+        self.ui.bt_delete.move(self.ui.bt_delete.x(), height)
+
 
     def eventHandler_bt_clients(self):
+        self.ui.stackWid_Properties.setFixedHeight(460)
+        self.markButtons(590)
         self.Mark_TableWidget(TableWidgetContent.Clients.__len__(), TableWidgetContent.Clients)
         self.Show_Table('Clients')
         self.ui.stackWid_Actions.setCurrentIndex(3)
@@ -138,6 +273,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def eventHandler_bt_requests(self):
         self.Mark_TableWidget(TableWidgetContent.Requests.__len__(), TableWidgetContent.Requests)
+        self.ui.stackWid_Properties.setFixedHeight(281)
+        self.markButtons(411)
         self.Show_Table('Requests')
         self.ui.stackWid_Actions.setCurrentIndex(4)
         self.ui.stackWid_Properties.setCurrentIndex(4)
@@ -146,6 +283,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_objects(self):
+        self.ui.stackWid_Properties.setFixedHeight(521)
+        self.markButtons(651)
         self.Mark_TableWidget(TableWidgetContent.Objects.__len__(), TableWidgetContent.Objects)
         self.Show_Table('Objects')
         self.ui.stackWid_Actions.setCurrentIndex(7)
@@ -155,6 +294,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_representatives(self):
+        self.ui.stackWid_Properties.setFixedHeight(361)
+        self.markButtons(491)
         self.Mark_TableWidget(TableWidgetContent.Representatives.__len__(), TableWidgetContent.Representatives)
         self.Show_Table('Representatives')
         self.ui.stackWid_Actions.setCurrentIndex(6)
@@ -164,6 +305,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_objectsC(self):
+        self.ui.stackWid_Properties.setFixedHeight(581)
+        self.markButtons(711)
         self.Mark_TableWidget(TableWidgetContent.ObjectsC.__len__(), TableWidgetContent.ObjectsC)
         self.Show_Table('Objects_C')
         self.ui.stackWid_Actions.setCurrentIndex(5)
@@ -173,6 +316,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_guests(self):
+        self.ui.stackWid_Properties.setFixedHeight(271)
+        self.markButtons(401)
         self.Mark_TableWidget(TableWidgetContent.Guests.__len__(), TableWidgetContent.Guests)
         self.Show_Table('Guests')
         self.ui.stackWid_Actions.setCurrentIndex(8)
@@ -182,6 +327,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_impressions(self):
+        self.ui.stackWid_Properties.setFixedHeight(331)
+        self.markButtons(460)
         self.Mark_TableWidget(TableWidgetContent.Impressions.__len__(), TableWidgetContent.Impressions)
         self.Show_Table('Impressions')
         self.ui.stackWid_Actions.setCurrentIndex(9)
@@ -612,7 +759,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
                     tmp_list = DataSets.TableWidgetContent.ObjectsC.copy()
 
-                    values = F"'{v1}', {v2}, '{v3}', '{v4}', {v5}, {v6}, {v7}, '{v8}', '{v9}', '{v10}', '{v11}', '{v12}', 1"
+                    values = F"'{v1}', {v2}, '{v3}', '{v4}', {v5}, {v6}, {v7}, '{v8}', '{v9}', '{v10}', '{v11}', '{v12}', null"
 
                     if (not v1 or not v2 or not v3 or not v4 or not v5 or not v6
                             or not v7 or not v8 or not v9 or not v10 or not v11):
@@ -717,13 +864,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             column_list = ', '.join(tmp_list)
 
             sqlquery = F"INSERT INTO {self.currentTable}({column_list}) VALUES({values})"
-
             self.SendQueryWithoutAnswer(sqlquery)
 
         except(AttributeError):
-            self.show_errorMessage('Ошибка ввода', 'Входные данные были введены неверно')
-
-
+            pass
 
     def ExportGuestContacts(self):
         """Копировать контактные данные гостя в буфер обмена"""
@@ -814,8 +958,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """Тестовая функция отображения фото из БД"""
 
         id = self.ui.tb_objectsc_id.text()
+        if(not id):
+            return
         self.count = int(self.SendQueryWithOneRow(f'SELECT COUNT(pic_data) FROM Objects_pictures WHERE pic_object = {id}'))
-        self.offset = 1
+        self.offset = 0
         dialog = Ui_Dialog_pictures()
         app = QtWidgets.QDialog()
         dialog.setupUi(app)
@@ -824,32 +970,53 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
         def pixmaplb():
-            if (self.offset >= self.count):
-                return
-            else:
-                image_data = self.SwitchPic(id, self.offset)
+            if (self.offset >= self.count or self.offset == 0):
+                self.offset = 1
+            image_data = self.SwitchPic(id, self.offset)
 
-                # Загрузка фото в бинарнике в надпись
-                pixmap = QPixmap()
-                pixmap.loadFromData(image_data)
+            # Загрузка фото в бинарнике в надпись
+            pixmap = QPixmap()
+            pixmap.loadFromData(image_data)
 
-                image = pixmap.toImage()
-                image = image.convertToFormat(QImage.Format.Format_RGB888)
+            image = pixmap.toImage()
+            image = image.convertToFormat(QImage.Format.Format_RGB888)
 
-                dialog.lb_pix.setPixmap(QPixmap.fromImage(image))
+            dialog.lb_pix.setPixmap(QPixmap.fromImage(image))
+            self.offset += 1
 
-                self.offset += 1
+
+
+        def pixmaplb_back():
+            if (self.offset >= self.count or self.offset <= 0):
+                self.offset = 1
+            image_data = self.SwitchPic(id, self.offset)
+
+            # Загрузка фото в бинарнике в надпись
+            pixmap = QPixmap()
+            pixmap.loadFromData(image_data)
+
+            image = pixmap.toImage()
+            image = image.convertToFormat(QImage.Format.Format_RGB888)
+
+            dialog.lb_pix.setPixmap(QPixmap.fromImage(image))
+            self.offset -= 1
+
+        def delPhoto():
+            self.SendQueryWithoutAnswer(F'DELETE FROM Objects_pictures WHERE pic_object '
+                                        F'IN(SELECT pic_data FROM Objects_pictures WHERE pic_object = {self.id} OFFSET {self.offset - 1})')
 
         dialog.bt_next.clicked.connect(lambda: pixmaplb())
+        dialog.bt_back.clicked.connect(lambda: pixmaplb_back())
+        dialog.bt_delphoto.clicked.connect(lambda: delPhoto())
 
         # Запуск окна
 
         app.exec()
 
+    def MakeReport(self):
+        cur = self.connect_pg()
 
-
-
-
+        cur.execute('SELECT ')
 
 
     def SendQueryWithoutAnswer(self, query):
@@ -857,6 +1024,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         cur = self.connect_pg()
         cur.execute(query)
         self.connection.commit()
+
 
 
     def Mark_TableWidget_Clear(self):
@@ -889,10 +1057,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         return result
 
+    def SendQueryWithSomeRow(self, query):
+        "Запрос с ответом в виде 1 строки"
+        cur = self.connect_pg()
+
+        cur.execute(query)
+        result = cur.fetchall()
+
+        return result
+
 
     def Show_Table(self, table):
         """Собрать записи и вывести их в tablewidget"""
         try:
+            self.checkTodaysImpressions()
+
             self.currentTable = table
             cur = self.connect_pg()
 
@@ -969,10 +1148,10 @@ if __name__ == '__main__':
     app = QApplication([])
 
     print(QStyleFactory.keys())
-
+    auth_window = AuthorizationWindow()
+    auth_window.show()
     window = MainWindow()
     window.setStyleSheet(open('styles2.qss').read())
 
-    window.show()
     sys.exit(app.exec())
 

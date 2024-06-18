@@ -9,6 +9,11 @@ QDialogButtonBox QPushButton {
     icon-size: 0px;
 }
 
+QLabel{
+    font: "Source Sans Pro";
+}
+
+
 #Dialog_Clients_registration{
     background-color: rgb(40, 42, 47);
 }

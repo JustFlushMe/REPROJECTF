@@ -9,14 +9,12 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Enter(object):
-    def setupUi(self, Enter):
-        Enter.setObjectName("Enter")
-        Enter.resize(596, 269)
-        self.centralwidget = QtWidgets.QWidget(parent=Enter)
-        self.centralwidget.setObjectName("centralwidget")
-        self.frame_enter = QtWidgets.QFrame(parent=self.centralwidget)
-        self.frame_enter.setGeometry(QtCore.QRect(30, 20, 531, 221))
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(600, 270)
+        self.frame_enter = QtWidgets.QFrame(parent=Form)
+        self.frame_enter.setGeometry(QtCore.QRect(40, 20, 531, 221))
         self.frame_enter.setStyleSheet("")
         self.frame_enter.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_enter.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
@@ -47,26 +45,24 @@ class Ui_Enter(object):
         self.bt_enter_settings.setIcon(icon)
         self.bt_enter_settings.setIconSize(QtCore.QSize(30, 30))
         self.bt_enter_settings.setObjectName("bt_enter_settings")
-        Enter.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(Enter)
-        QtCore.QMetaObject.connectSlotsByName(Enter)
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
 
-    def retranslateUi(self, Enter):
+    def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Enter.setWindowTitle(_translate("Enter", "Вход в систему"))
-        self.bt_enter.setText(_translate("Enter", "Войти"))
-        self.te_enter_login.setPlaceholderText(_translate("Enter", "Логин"))
-        self.te_enter_password.setPlaceholderText(_translate("Enter", "Пароль"))
-        self.label.setText(_translate("Enter", "Введите данные учетной записи для доступа к приложению"))
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.bt_enter.setText(_translate("Form", "Войти"))
+        self.te_enter_login.setPlaceholderText(_translate("Form", "Логин"))
+        self.te_enter_password.setPlaceholderText(_translate("Form", "Пароль"))
+        self.label.setText(_translate("Form", "Введите данные учетной записи для доступа к приложению"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Enter = QtWidgets.QMainWindow()
-    Enter.setStyleSheet(open('styles2.qss').read())
-    ui = Ui_Enter()
-    ui.setupUi(Enter)
-    Enter.show()
+    Form = QtWidgets.QWidget()
+    ui = Ui_Form()
+    ui.setupUi(Form)
+    Form.show()
     sys.exit(app.exec())

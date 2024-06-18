@@ -12,6 +12,7 @@ QLineEdit, QPlainTextEdit{
 
 QLabel{
     background-color: transparent;
+    font: "Source Sans Pro";
 }
 
 #label{
@@ -88,6 +89,23 @@ QCheckBox::indicator:checked {
     color: rgb(255, 255, 255);
 }
 
+#bt_copy {
+    background-color: #8e31ff;
+    color: white;
+}
+
+#bt_notifications{
+    background-color: rgb(30, 32, 37);
+    color: rgb(255, 255, 255);
+    font: light 10pt "Source Sans Pro";
+    icon: url(Icons/RedDot.png);
+    border-radius: 15px;
+    text-align: right;
+    padding-top: 5px; /* Устанавливаем отступ сверху */
+    padding-bottom: 5px; /* Устанавливаем отступ снизу */
+    padding-left: 10px; /* Устанавливаем отступ слева */
+    padding-right: 10px; /* Устанавливаем отступ справа */
+}
 
 /*  Кнопка удаления     */
 #bt_delete{
@@ -124,12 +142,13 @@ cb_column{
 }
 
 #frame_statusbar{
-    background-color: rgb(0, 155, 0);
+    background-color: rgb(10, 205, 135);
+    border-radius: 10;
     height: 150px;
 }
 
 #lb_statusbar{
-    font: medium 10pt "Source Sans Pro";
+    font-family: "Z003";
 }
 
 #bt_enter_settings{

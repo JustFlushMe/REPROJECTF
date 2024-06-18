@@ -27,6 +27,9 @@ class Ui_Dialog_pictures(object):
         self.bt_next = QtWidgets.QPushButton(parent=Dialog_pictures)
         self.bt_next.setGeometry(QtCore.QRect(820, 460, 88, 34))
         self.bt_next.setObjectName("bt_next")
+        self.bt_delphoto = QtWidgets.QPushButton(parent=Dialog_pictures)
+        self.bt_delphoto.setGeometry(QtCore.QRect(20, 460, 101, 34))
+        self.bt_delphoto.setObjectName("bt_delphoto")
 
         self.retranslateUi(Dialog_pictures)
         QtCore.QMetaObject.connectSlotsByName(Dialog_pictures)
@@ -37,6 +40,7 @@ class Ui_Dialog_pictures(object):
         self.lb_pix.setText(_translate("Dialog_pictures", "TextLabel"))
         self.bt_back.setText(_translate("Dialog_pictures", "<<"))
         self.bt_next.setText(_translate("Dialog_pictures", ">>"))
+        self.bt_delphoto.setText(_translate("Dialog_pictures", "Удалить фото"))
 
 
 if __name__ == "__main__":
