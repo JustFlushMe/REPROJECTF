@@ -187,7 +187,7 @@ class Ui_MainWindow(object):
         self.bt_clients.setIconSize(QtCore.QSize(25, 25))
         self.bt_clients.setObjectName("bt_clients")
         self.bt_reports = QtWidgets.QPushButton(parent=self.frame)
-        self.bt_reports.setGeometry(QtCore.QRect(10, 520, 134, 32))
+        self.bt_reports.setGeometry(QtCore.QRect(20, 520, 221, 32))
         font = QtGui.QFont()
         font.setFamily("Source Sans Pro")
         font.setPointSize(16)
@@ -1253,7 +1253,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.cb_column.setCurrentIndex(-1)
-        self.stackWid_Actions.setCurrentIndex(8)
+        self.stackWid_Actions.setCurrentIndex(11)
         self.stackWid_Properties.setCurrentIndex(8)
         self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)

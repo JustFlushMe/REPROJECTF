@@ -436,9 +436,9 @@ color: black;</string>
     <widget class="QPushButton" name="bt_reports">
      <property name="geometry">
       <rect>
-       <x>10</x>
+       <x>20</x>
        <y>520</y>
-       <width>134</width>
+       <width>221</width>
        <height>32</height>
       </rect>
      </property>
@@ -668,7 +668,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>8</number>
+     <number>11</number>
     </property>
     <widget class="QWidget" name="page_serviceHist">
      <widget class="QFrame" name="frame_servicesHist">

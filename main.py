@@ -810,7 +810,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     # Сборка значений
                     values = F"'{v1}', '{v2}', '{v3}', '{v4}', '{v5}', '{v6}', '{v7}'"
 
-                    print(values) # Отладка
+                    # print(values) # Отладка
 
 
                 case Ui_Dialog_Representatives_add():
@@ -893,7 +893,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
                     tmp_list = DataSets.TableWidgetContent.ObjectsC.copy()
 
-                    print(tmp_list)
+                    # print(tmp_list)
                     values = F"'{v1}', {v2}, '{v3}', '{v4}', {v5}, {v6}, {v7}, '{v8}', '{v9}', '{v10}', '{v11}', '{v12}'"
 
                     if (not v1 or not v2 or not v3 or not v4 or not v5 or not v6
@@ -924,7 +924,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         valuesAP += "True, " if Ui_Dialog.cb_obj_accidentrate.isChecked() == True else "null, "
                         valuesAP += f"'{Ui_Dialog.te_obj_repair.toPlainText()}'" if Ui_Dialog.te_obj_repair.toPlainText() else "null"
 
-                        print(valuesAP) # Для отладки
+                        # print(valuesAP) # Для отладки
 
                         # Создание массива названий столбцов без ключевого
                         tmp_listAP = DataSets.TableWidgetContent.Object_addproperties.copy()
@@ -1000,7 +1000,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             sqlquery = F"INSERT INTO {self.currentTable}({column_list}) VALUES({values})"
 
-            print(sqlquery)
+            # print(sqlquery)
             self.SendQueryWithoutAnswer(sqlquery)
 
         except(Exception):
@@ -1063,8 +1063,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.file_paths = file_names[0] # Запись путей к файлам
 
         # Для отладки
-        print(file_names[0])
-        print(self.file_paths[1])
+        # print(file_names[0])
+        # print(self.file_paths[1])
 
 
     def ImportPicturesToDB(self):
@@ -1249,7 +1249,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def Show_Table(self, table):
         """Собрать записи и вывести их в tablewidget"""
-        """Собрать записи и вывести их в tablewidget"""
         try:
             self.checkTodaysMeetings()
             self.checkTodaysImpressions()
@@ -1330,7 +1329,6 @@ if __name__ == '__main__':
 
     app = QApplication([])
 
-    print(QStyleFactory.keys())
     auth_window = AuthorizationWindow()
     auth_window.show()
     window = MainWindow()
