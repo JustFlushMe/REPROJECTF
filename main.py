@@ -80,6 +80,7 @@ class AuthorizationWindow(QWidget):
         self.username_input.setText(connect_config.user)
         layout.addWidget(self.password_label)
         layout.addWidget(self.password_input)
+        self.password_input.setText(connect_config.password)
         layout.addWidget(self.login_button)
         self.setLayout(layout)
 
@@ -102,6 +103,7 @@ class AuthorizationWindow(QWidget):
                 file.write(
 f'''dbname = '{self.db_input.text()}'
 user = '{self.username_input.text()}'
+password = '{self.password_input.text()}'
 host = '{self.ip_input.text()}'
 port = '{self.port_input.text()}' ''')
 
@@ -1097,8 +1099,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """Тестовая функция отображения фото из БД"""
 
         id = self.ui.tb_objectsc_id.text()
-        if(not id):
+
+        if not id:
             return
+
         self.count = int(self.SendQueryWithOneRow(f'SELECT COUNT(pic_data) FROM Objects_pictures WHERE pic_object = {id}'))
         self.offset = 0
         dialog = Ui_Dialog_pictures()
@@ -1277,11 +1281,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # В конечном варианте будет осуществляться почти вручную
         try:
             self.connection = psycopg2.connect(
-                dbname = 'redbv3',
-                user = 'postgres',
-                password = 'password',
-                host = '172.17.0.2',
-                port = '5432'
+                dbname = connect_config.dbname,
+                user = connect_config.user,
+                password = connect_config.password,
+                host = connect_config.host,
+                port = connect_config.port
             )
 
             cur = self.connection.cursor()

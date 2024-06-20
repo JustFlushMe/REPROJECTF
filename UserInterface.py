@@ -1254,7 +1254,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.cb_column.setCurrentIndex(-1)
         self.stackWid_Actions.setCurrentIndex(11)
-        self.stackWid_Properties.setCurrentIndex(8)
+        self.stackWid_Properties.setCurrentIndex(2)
         self.stackedWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1335,7 +1335,7 @@ class Ui_MainWindow(object):
         self.label_client_phone_5.setText(_translate("MainWindow", "Объект"))
         self.label_5.setText(_translate("MainWindow", "id"))
         self.dtpicker_deals_datetime.setDisplayFormat(_translate("MainWindow", "yyyy-MM-dd HH:mm"))
-        self.cb_deals_type.setItemText(0, _translate("MainWindow", "Покупка"))
+        self.cb_deals_type.setItemText(0, _translate("MainWindow", "Продажа"))
         self.cb_deals_type.setItemText(1, _translate("MainWindow", "Аренда"))
         self.tb_deals_cost.setInputMask(_translate("MainWindow", "9999999999"))
         self.label_client_phone_7.setText(_translate("MainWindow", "Сумма сделки"))

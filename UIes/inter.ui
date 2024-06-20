@@ -1535,7 +1535,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
      <string notr="true"/>
     </property>
     <property name="currentIndex">
-     <number>8</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page_ServicesHist_props">
      <property name="styleSheet">
@@ -2028,7 +2028,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
        </property>
        <item>
         <property name="text">
-         <string>Покупка</string>
+         <string>Продажа</string>
         </property>
        </item>
        <item>
