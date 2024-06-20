@@ -84,17 +84,22 @@ QCheckBox::indicator:checked {
 }
 
 
-#bt_find, #bt_edit, #bt_enter, #bt_objectsc_showPhotos{
+#bt_find, #bt_edit, #bt_enter{
     background-color: #8e31ff;
     color: rgb(255, 255, 255);
 }
 
+#bt_objectsc_showPhotos{
+    background-color: rgb(230, 230, 230);
+    color: rgb(148, 141, 138);
+}
+
 #bt_copy {
-    background-color: #8e31ff;
+    background-color: #b431ff;
     color: white;
 }
 
-#bt_notifications{
+#bt_impcounts, #bt_meetcounts{
     background-color: rgb(30, 32, 37);
     color: rgb(255, 255, 255);
     font: light 10pt "Source Sans Pro";
@@ -137,7 +142,6 @@ cb_column{
     font: 14pt "Source Sans Pro";
     text-align: left;
     icon-size: 25px 25px;
-
 
 }
 
@@ -205,21 +209,7 @@ cb_column{
     icon: url(Icons/Deals.png);
 }
 
-#bt_tablesview{
-    color: rgb(248, 248, 248);
-    background-color: transparent;
-    font: 16pt "Source Sans Pro";
-
-}
-
-#bt_tablesview{
-    color: rgb(248, 248, 248);
-    background-color: transparent;
-    font: 16pt "Source Sans Pro";
-
-}
-
-#bt_tablesview{
+#bt_reports{
     color: rgb(248, 248, 248);
     background-color: transparent;
     font: 16pt "Source Sans Pro";
@@ -231,7 +221,7 @@ cb_column{
 /*///////////////////////////////////*/
 
 /* надпись СВОЙСТВА */
-#lb_propertiesTitle{
+#lb_propertiesTitle, #lb_selectedTable{
     font: bold 18pt "Source Sans Pro";
 }
 
@@ -263,13 +253,13 @@ cb_column{
 }
 
 /* окно Действий*/
-#page_serviceHist, #page_meetings, #page_deals, #page_clients, #page_requests, #page_objects, #page_representatives, #page_objectsC, #page_guests, #page_impressions{
+#page_serviceHist, #page_meetings, #page_deals, #page_clients, #page_requests, #page_objects, #page_representatives, #page_objectsC, #page_guests, #page_impressions, #page_reps{
     background-color: rgb(30, 32, 37);
 
 }
 
 /* фрейм внутри окна Действий*/
-#frame_servicesHist, #frame_meetings, #frame_deals, #frame_clients, #frame_requests, #frame_objects, #frame_representatives, #frame_objectsC, #frame_guests, #frame_impressions{
+#frame_servicesHist, #frame_meetings, #frame_deals, #frame_clients, #frame_requests, #frame_objects, #frame_representatives, #frame_objectsC, #frame_guests, #frame_impressions, #frame_reps{
     background-color: rgb(30, 32, 37);
     border: 0px;
 
@@ -372,6 +362,7 @@ QPushButton:hover{
 
 /* Выделение строки в tablewidget*/
 #tableWidget_main::item:selected {
+    color: white;
     background-color: #8e31ff;
 }
 
@@ -384,7 +375,7 @@ QPushButton:hover{
 #bt_objects_show_homes, #bt_guests_add, #bt_guests_showBlacklist, #bt_guests_contacts_export,
 #bt_guests_blacklist_addrem, #bt_impressions_add, #bt_freeImpressionsTommorrow, #bt_impressions_cancel,
 #bt_servicesHistAdd, #bt_meetingsAdd, #bt_meetingsEdit, #bt_meetingsCancel, #bt_meetingsFree, #bt_deals_add,
-#bt_dealsCancel, #bt_dealSetReady, #bt_dealFinish, #bt_objectsc_add, #bt_objectsc_onlyrent, #bt_objectsc_onlysale{
+#bt_dealsCancel, #bt_dealSetReady, #bt_dealFinish, #bt_objectsc_add, #bt_objectsc_onlyrent, #bt_objectsc_onlysale, #bt_makerepClientsProfit, #bt_makerepDealsC{
    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0.522, stop:0.558824 rgba(136, 0, 255, 255), stop:1 rgba(233, 207, 255, 255));
    color: White;
    font: 16pt "Source Sans Pro";
@@ -400,6 +391,107 @@ QPushButton:hover{
 
 #bt_exportContacts{
     icon: url(Icons/ExportContacts.png);
+}
+
+#bt_meetingsAdd{
+    icon: url(Icons/MeetingsAdd.png);
+}
+
+#bt_meetingsCancel{
+    icon: url(Icons/MeetingsCancel.png);
+}
+
+#bt_meetingsFree{
+    icon: url(Icons/MeetingsFree.png);
+}
+
+#bt_servicesHistAdd{
+    icon: url(Icons/Add.png);
+}
+
+#bt_requests_add{
+    icon: url(Icons/AddReq.png);
+}
+
+#bt_objectsc_add{
+    icon: url(Icons/Add.png);
+}
+
+#bt_objectsc_onlyrent{
+    icon: url(Icons/ObjectsRent.png);
+}
+
+#bt_objectsc_onlysale{
+    icon: url(Icons/ObjectsSales.png);
+}
+
+
+#bt_objects_add{
+    icon: url(Icons/Add.png);
+}
+
+#bt_objects_show_homes{
+    icon: url(Icons/ShowHouses.png);
+}
+
+#bt_objects_show_appartments{
+    icon: url(Icons/ShowAppartaments.png);
+}
+
+#bt_representatives_add{
+    icon: url(Icons/AddRepresentative.png);
+}
+
+#bt_deals_add{
+    icon: url(Icons/AddDeal.png);
+}
+
+#bt_dealFinish{
+    icon: url(Icons/DealFinish.png);
+}
+
+#bt_dealsCancel{
+    icon: url(Icons/Cancel.png);
+}
+
+#bt_dealSetReady{
+    icon: url(Icons/DealReady.png);
+}
+
+#bt_impressions_add{
+    icon: url(Icons/ImpressionSchel.png);
+}
+
+#bt_freeImpressionsTommorrow{
+    icon: url(Icons/FreeImpressions.png);
+}
+
+#bt_impressions_cancel{
+    icon: url(Icons/Cancel.png);
+}
+
+#bt_guests_add{
+    icon: url(Icons/Add.png);
+}
+
+#bt_guests_showBlacklist{
+    icon: url(Icons/Blacklist.png);
+}
+
+#bt_guests_blacklist_addrem{
+    icon: url(Icons/Rescheldue.png);
+}
+
+#bt_guests_contacts_export{
+    icon: url(Icons/contacts.png);
+}
+
+#bt_makerepClientsProfit{
+    icon: url(Icons/ReportClients.png);
+}
+
+#bt_makerepDealsC{
+    icon: url(Icons/report.png);
 }
 
 /*///////////////////////////////////////////////*/

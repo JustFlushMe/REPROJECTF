@@ -8,6 +8,8 @@ import DataSets
 import psycopg2
 import pyperclip
 import openpyxl
+from openpyxl import Workbook
+from openpyxl.utils import get_column_letter
 import importlib
 import pandas as pd
 # 09.06.2024 - Отчеты, фото объектов
@@ -78,7 +80,6 @@ class AuthorizationWindow(QWidget):
         self.username_input.setText(connect_config.user)
         layout.addWidget(self.password_label)
         layout.addWidget(self.password_input)
-        self.password_input.setText(connect_config.password)
         layout.addWidget(self.login_button)
         self.setLayout(layout)
 
@@ -101,7 +102,6 @@ class AuthorizationWindow(QWidget):
                 file.write(
 f'''dbname = '{self.db_input.text()}'
 user = '{self.username_input.text()}'
-password = '{self.password_input.text()}'
 host = '{self.ip_input.text()}'
 port = '{self.port_input.text()}' ''')
 
@@ -126,7 +126,7 @@ port = '{self.port_input.text()}' ''')
             auth_window.close()
 
         except psycopg2.Error as e:
-            MainWindow.show_errorMessage(self, 'Ошибкаа', 'Ошибка')
+            MainWindow.show_errorMessage(self, 'Ошибка', 'Ошибка')
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -157,6 +157,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ui.bt_impressions_add.clicked.connect(lambda: self.ShowAddDialog(Ui_Dialog_Impressions_add()))
         self.ui.bt_guests_add.clicked.connect(lambda: self.ShowAddDialog(Ui_Dialog_Guests_add()))
 
+        self.ui.bt_makerepDealsC.clicked.connect(lambda: self.MakeReportDealsC())
+        self.ui.bt_makerepClientsProfit.clicked.connect(lambda: self.MakeReportClientsProfit())
+        self.ui.bt_reports.clicked.connect(lambda: self.eventHandler_bt_reports())
+        self.ui.bt_exportContacts.clicked.connect(lambda: self.exportContacts())
+
         # Обработка событий панели навигации
         self.ui.bt_services.clicked.connect(self.eventHandler_bt_servicesHist)
         self.ui.bt_meetings.clicked.connect(self.eventHandler_bt_meetings)
@@ -173,23 +178,45 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # Обработка событий панели свойств
         self.ui.tableWidget_main.clicked.connect(self.GetDataFromCurrentRow)
         self.ui.bt_edit.clicked.connect(lambda: self.EditCurrentRow())
+        self.ui.bt_copy.clicked.connect(lambda: self.copyfromCurrentRow())
         self.ui.bt_delete.clicked.connect(self.DeleteDataFromCurrentRow)
         self.ui.bt_objectsc_showPhotos.clicked.connect(self.ExportPicturesFromDB)
+        self.ui.bt_find.clicked.connect(self.FindByColValues)
+        self.ui.bt_impcounts.clicked.connect(lambda: self.showTodaysImpressions())
+        self.ui.bt_meetcounts.clicked.connect(lambda: self.showTodaysMeetings())
+        self.ui.bt_meetingsCancel.clicked.connect(lambda: self.CancelMeeting())
 
-        self.ui.bt_notifications.clicked.connect(lambda: self.showTodaysImpressions())
 
         # Обработка событий виджетов
         self.ui.bt_guests_contacts_export.clicked.connect(self.ExportGuestContacts)
         self.ui.bt_guests_showBlacklist.clicked.connect(self.ShowGuestsBlacklist)
         self.ui.bt_guests_blacklist_addrem.clicked.connect(self.AddRemGuestToBlackList)
 
+    def copyfromCurrentRow(self):
+        colcount = self.ui.tableWidget_main.columnCount()
+        cur_row = self.ui.tableWidget_main.currentRow()
+        coptext = ""
+        for col in range(colcount):
+            coptext += self.ui.tableWidget_main.horizontalHeaderItem(col).text() + ': ' + self.ui.tableWidget_main.item(cur_row, col).text() + '\n'
+        pyperclip.copy(coptext)
+
+    def exportContacts(self):
+        self.MakeReport('SELECT cl_id, cl_fname, cl_lname, cl_patronymic cl_phone, cl_email FROM Clients')
+
+
     def checkTodaysImpressions(self):
         today = datetime.now()
         today = today.replace(hour=0, minute=0, second=0, microsecond=0)
         today_end = today.replace(hour=23, minute=59, second=59)
-        print(today)
         result = self.SendQueryWithOneRow(f"SELECT COUNT(imp_id) FROM Impressions WHERE imp_datetime > '{today}' AND imp_datetime < '{today_end}'")
-        self.ui.bt_notifications.setText(f'Встреч на сегодня: {result}')
+        self.ui.bt_impcounts.setText(f'Показов {result} ')
+
+    def checkTodaysMeetings(self):
+        today = datetime.now()
+        today = today.replace(hour=0, minute=0, second=0, microsecond=0)
+        today_end = today.replace(hour=23, minute=59, second=59)
+        result = self.SendQueryWithOneRow(f"SELECT COUNT(met_datetime) FROM Meetings WHERE met_datetime > '{today}' AND met_datetime < '{today_end}'")
+        self.ui.bt_meetcounts.setText(f'Встреч {result}')
 
     def showTodaysImpressions(self):
         self.eventHandler_bt_impressions()
@@ -205,11 +232,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             for column_nmber, data in enumerate(row_data):
                 self.ui.tableWidget_main.setItem(row_number, column_nmber, QTableWidgetItem(str(data)))
 
+    def showTodaysMeetings(self):
+        self.eventHandler_bt_meetings()
+        self.ui.tableWidget_main.setRowCount(0)
+
+        today = datetime.now()
+        today = today.replace(hour=0, minute=0, second=0, microsecond=0)
+        today_end = today.replace(hour=23, minute=59, second=59)
+
+        result = self.SendQueryWithSomeRow(f"SELECT * FROM Meetings WHERE met_datetime > '{today}' AND met_datetime < '{today_end}'")
+        for row_number, row_data in enumerate(result):
+            self.ui.tableWidget_main.insertRow(row_number)
+            for column_nmber, data in enumerate(row_data):
+                self.ui.tableWidget_main.setItem(row_number, column_nmber, QTableWidgetItem(str(data)))
 
 
 
+
+    def eventHandler_bt_reports(self):
+        self.ui.stackWid_Actions.setCurrentIndex(11)
 
     def eventHandler_bt_servicesHist(self):
+        self.ui.lb_selectedTable.setText('Услуги')
         self.ui.stackWid_Properties.setFixedHeight(300)
         self.markButtons(430)
         self.Mark_TableWidget(TableWidgetContent.ServicesHist.__len__(), TableWidgetContent.ServicesHist)
@@ -221,6 +265,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_meetings(self):
+        self.ui.lb_selectedTable.setText('Встречи')
         self.ui.stackWid_Properties.setFixedHeight(350)
         self.markButtons(480)
         self.Mark_TableWidget(TableWidgetContent.Meetings.__len__(), TableWidgetContent.Meetings)
@@ -232,6 +277,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_deals(self):
+        self.ui.lb_selectedTable.setText('Сделки')
         self.ui.stackWid_Properties.setFixedHeight(400)
         self.markButtons(530)
         self.Mark_TableWidget(TableWidgetContent.Deals.__len__(), TableWidgetContent.Deals)
@@ -244,6 +290,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_deals_c(self):
+        self.ui.lb_selectedTable.setText('Сделки от клиента')
         self.ui.stackWid_Properties.setFixedHeight(400)
         self.markButtons(530)
         self.Mark_TableWidget(TableWidgetContent.Deals_c.__len__(), TableWidgetContent.Deals_c)
@@ -261,6 +308,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_clients(self):
+        self.ui.lb_selectedTable.setText('Клиенты')
         self.ui.stackWid_Properties.setFixedHeight(460)
         self.markButtons(590)
         self.Mark_TableWidget(TableWidgetContent.Clients.__len__(), TableWidgetContent.Clients)
@@ -272,6 +320,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_requests(self):
+        self.ui.lb_selectedTable.setText('Запросы клиентов')
         self.Mark_TableWidget(TableWidgetContent.Requests.__len__(), TableWidgetContent.Requests)
         self.ui.stackWid_Properties.setFixedHeight(281)
         self.markButtons(411)
@@ -283,6 +332,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_objects(self):
+        self.ui.lb_selectedTable.setText('Объекты')
         self.ui.stackWid_Properties.setFixedHeight(521)
         self.markButtons(651)
         self.Mark_TableWidget(TableWidgetContent.Objects.__len__(), TableWidgetContent.Objects)
@@ -294,6 +344,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_representatives(self):
+        self.ui.lb_selectedTable.setText('Представители объектов')
         self.ui.stackWid_Properties.setFixedHeight(361)
         self.markButtons(491)
         self.Mark_TableWidget(TableWidgetContent.Representatives.__len__(), TableWidgetContent.Representatives)
@@ -305,6 +356,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_objectsC(self):
+        self.ui.lb_selectedTable.setText('Объекты клиентов')
         self.ui.stackWid_Properties.setFixedHeight(581)
         self.markButtons(711)
         self.Mark_TableWidget(TableWidgetContent.ObjectsC.__len__(), TableWidgetContent.ObjectsC)
@@ -316,6 +368,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_guests(self):
+        self.ui.lb_selectedTable.setText('Гости')
         self.ui.stackWid_Properties.setFixedHeight(271)
         self.markButtons(401)
         self.Mark_TableWidget(TableWidgetContent.Guests.__len__(), TableWidgetContent.Guests)
@@ -327,6 +380,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def eventHandler_bt_impressions(self):
+        self.ui.lb_selectedTable.setText('Показы')
         self.ui.stackWid_Properties.setFixedHeight(331)
         self.markButtons(460)
         self.Mark_TableWidget(TableWidgetContent.Impressions.__len__(), TableWidgetContent.Impressions)
@@ -335,6 +389,61 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ui.stackWid_Properties.setCurrentIndex(9)
         self.ui.cb_column.clear()
         self.ui.cb_column.addItems(TableWidgetContent.Impressions)
+
+    def CancelMeeting(self):
+        id = self.ui.tb_meetings_id.text()
+        self.SendQueryWithoutAnswer(f"UPDATE Meetings SET met_status = 'Отменено' WHERE met_id = {id}")
+
+
+
+    def FindByColValues(self):
+
+
+        col = self.ui.cb_column.currentText()
+        if self.ui.te_search.text() == "" or self.ui.cb_column.currentIndex() == 0:
+            return
+        else:
+            findval = f"'{self.ui.te_search.text()}'"
+
+
+
+            self.ui.tableWidget_main.setRowCount(0)
+            if(self.ui.cb_exactmatch.isChecked() == True):
+                self.sqlquery = F"SELECT * FROM {self.currentTable} WHERE {col} IN({findval})"
+            else:
+                self.sqlquery = F"SELECT * FROM {self.currentTable} WHERE {col} LIKE {findval}"
+
+            cur = self.connect_pg()
+            cur.execute(self.sqlquery)
+            result = cur.fetchall()
+
+            for row_number, row_data in enumerate(result):
+                self.ui.tableWidget_main.insertRow(row_number)
+                for column_nmber, data in enumerate(row_data):
+                    self.ui.tableWidget_main.setItem(row_number, column_nmber, QTableWidgetItem(str(data)))
+
+    def ReportDealsClientHolder(self, startDate, finishDate):
+        try:
+            
+            cur = self.connect_pg()
+
+
+            self.sqlquery = (F"SELECT cl_id, cl_lname, cl_fname, cl_patronymic, deal_id, obj_id, deal_date, deal_name, "
+                             F"deal_type, deal_object, deal_price, deal_csum, deal_status FROM Deals_c "
+                             F"RIGHT JOIN Objects_c ON Deals_c.deal_object = Objects_C.obj_id) RIGHT JOIN"
+                             F" Clients ON Clients.cl_id = Objects_c.obj_owner WHERE deal_date > {startDate} "
+                             F"AND deal_date < {finishDate};")
+
+            cur.execute(self.sqlquery)
+            result = cur.fetchall()
+
+            for row_number, row_data in enumerate(result):
+                self.ui.tableWidget_main.insertRow(row_number)
+                for column_nmber, data in enumerate(row_data):
+                    self.ui.tableWidget_main.setItem(row_number, column_nmber, QTableWidgetItem(str(data)))
+
+        except(AttributeError):
+            return
 
 
     def GetDataFromCurrentRow(self):
@@ -348,7 +457,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.ui.tb_servicesHist_client.setText(self.ui.tableWidget_main.item(cur_row, 1).text())
                 self.ui.dtpicker_servicesHist_datetime.setDateTime(QDateTime.fromString(self.ui.tableWidget_main.item(cur_row, 2).text(), "yyyy-MM-dd HH:mm:ss"))
                 self.ui.tb_servicesHist_service.setText(self.ui.tableWidget_main.item(cur_row, 3).text())
-                self.ui.tb_servicesHist_cost.setText(self.ui.tableWidget_main.item(cur_row, 4).text())
+                cost = self.ui.tableWidget_main.item(cur_row, 4).text()
+                cost = cost[:-1]
+                self.ui.tb_servicesHist_cost.setText(cost)
 
             case "Meetings":
                 self.ui.tb_meetings_id.setText(self.ui.tableWidget_main.item(cur_row, 0).text())
@@ -372,21 +483,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             case "Requests":
                 self.ui.tb_req_id.setText(self.ui.tableWidget_main.item(cur_row, 0).text())
                 self.ui.tb_req_client.setText(self.ui.tableWidget_main.item(cur_row, 1).text())
-                self.ui.tb_req_details.setText(self.ui.tableWidget_main.item(cur_row, 2).text())
+                self.ui.tb_req_details.setPlainText(self.ui.tableWidget_main.item(cur_row, 2).text())
 
             case "Objects":
                 self.ui.tb_objects_id.setText(self.ui.tableWidget_main.item(cur_row, 0).text())
                 self.ui.tb_objects_name.setText(self.ui.tableWidget_main.item(cur_row, 1).text())
-                self.ui.tb_objects_representative.setText(self.ui.tableWidget_main.item(cur_row, 2).text())
-                self.ui.cb_objects_second.setCurrentText(self.ui.tableWidget_main.item(cur_row, 3).text())
-                self.ui.cb_objects_type.setCurrentText(self.ui.tableWidget_main.item(cur_row, 4).text())
-                self.ui.cb_objects_dtype.setCurrentText(self.ui.tableWidget_main.item(cur_row, 5).text())
-                self.ui.tb_objects_square.setText(self.ui.tableWidget_main.item(cur_row, 6).text())
-                self.ui.sb_objects_rooms.setValue(int(float(self.ui.tableWidget_main.item(cur_row, 7).text())))
-                self.ui.tb_objects_price.setText(self.ui.tableWidget_main.item(cur_row, 8).text())
-                self.ui.tb_objects_address.setText(self.ui.tableWidget_main.item(cur_row, 9).text())
-                self.ui.tb_objects_desc.setPlainText(self.ui.tableWidget_main.item(cur_row, 10).text())
-                self.ui.tb_objects_addprops.setText(self.ui.tableWidget_main.item(cur_row, 11).text())
+                self.ui.tb_objects_owner.setText(self.ui.tableWidget_main.item(cur_row, 2).text())
+                self.ui.tb_objects_representative.setText(self.ui.tableWidget_main.item(cur_row, 3).text())
+                self.ui.cb_objects_second.setCurrentText(self.ui.tableWidget_main.item(cur_row, 4).text())
+                self.ui.cb_objects_type.setCurrentText(self.ui.tableWidget_main.item(cur_row, 5).text())
+                self.ui.cb_objects_dtype.setCurrentText(self.ui.tableWidget_main.item(cur_row, 6).text())
+                self.ui.tb_objects_square.setText(self.ui.tableWidget_main.item(cur_row, 7).text())
+                self.ui.sb_objects_rooms.setValue(int(float(self.ui.tableWidget_main.item(cur_row, 8).text())))
+                self.ui.tb_objects_price.setText(self.ui.tableWidget_main.item(cur_row, 9).text())
+                self.ui.tb_objects_address.setText(self.ui.tableWidget_main.item(cur_row, 10).text())
+                self.ui.tb_objects_desc.setPlainText(self.ui.tableWidget_main.item(cur_row, 11).text())
+                self.ui.tb_objects_addprops.setText(self.ui.tableWidget_main.item(cur_row, 12).text())
 
             case "Representatives":
                 self.ui.tb_representatives_id.setText(self.ui.tableWidget_main.item(cur_row, 0).text())
@@ -451,7 +563,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.ui.dtpicker_impressions_datetime.setDateTime(QDateTime.fromString(self.ui.tableWidget_main.item(cur_row, 1).text(), "yyyy-MM-dd HH:mm:ss"))
                 self.ui.tb_imressions_object.setText(self.ui.tableWidget_main.item(cur_row, 2,).text())
                 self.ui.tb_impressions_guests.setText(self.ui.tableWidget_main.item(cur_row, 3).text())
-                self.ui.cb_impressions_finished.setText(self.ui.tableWidget_main.item(cur_row, 4).text())
+
+                cb = self.ui.tableWidget_main.item(cur_row, 4).text()
+
+                if cb == 'True':
+                    self.ui.cb_impressions_finished.setChecked(False)
+                else:
+                    self.ui.cb_impressions_finished.setChecked(True)
 
 
     def EditCurrentRow(self):
@@ -495,7 +613,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             case "Requests":
                 id = self.ui.tb_req_id.text()
                 client = self.ui.tb_req_client.text()
-                details = self.ui.tb_req_details.text()
+                details = self.ui.tb_req_details.toPlainText()
 
                 self.SendQueryWithoutAnswer(f"UPDATE {self.currentTable} SET req_client = {client}, "
                                             f"req_details = '{details}' WHERE req_id = {id}")
@@ -504,6 +622,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 id = self.ui.tb_objects_id.text()
                 name = self.ui.tb_objects_name.text()
                 representative = self.ui.tb_objects_representative.text()
+                owner = self.ui.tb_objects_owner.text()
                 if self.ui.cb_objects_second.currentText() == 'Да':
                     second = 'True'
                 else: second = 'False'
@@ -519,7 +638,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 if addprops == 'None': addprops = 'Null'
 
                 self.SendQueryWithoutAnswer(f"UPDATE {self.currentTable} SET obj_name = '{name}', "
-                                            f"obj_representative  = {representative}, obj_second  = {second}, "
+                                            f"obj_representative  = {representative}, obj_owner = {owner}, obj_second  = {second}, "
                                             f"obj_type  = '{type}', obj_dtype  = '{dtype}', obj_square  = {square}, "
                                             f"obj_rooms = {rooms}, obj_price = {price}, obj_address = '{address}', "
                                             f"obj_desc = '{desc}', obj_addpr = {addprops} WHERE obj_id = {id}")
@@ -576,6 +695,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             case "Objects_C":
 
                 id = self.ui.tb_objectsc_id.text()
+                cadastal = self.ui.tb_objectsc_cadastral.text()
                 owner = self.ui.tb_objectsc_owner.text()
                 name = self.ui.tb_objectsc_name.text()
                 type = self.ui.cb_objectsc_type.currentText()
@@ -583,16 +703,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 rooms = self.ui.sb_objectsc_rooms.text()
                 price = self.ui.tb_objectsc_price.text()
                 adddate = (self.ui.dtpicker_objectsc_addate.date()).toString("yyyy-MM-dd")
-                target = self.ui.cb_objectsc_type.currentText()
+                target = self.ui.cb_objects_dtype.currentText()
                 status = self.ui.cb_objectsc_status.currentText()
                 address = self.ui.tb_objectsc_address.text()
                 desc = self.ui.tb_objectsc_desc.toPlainText()
 
-                self.SendQueryWithoutAnswer(f"UPDATE {self.currentTable} SET obj_owner = {owner}, obj_name = '{name}', "
+                self.SendQueryWithoutAnswer(f"UPDATE {self.currentTable} SET obj_cadastral = '{cadastal}', obj_owner = {owner}, obj_name = '{name}', "
                                             f"obj_type = '{type}', obj_square  = {square}, obj_rooms = {rooms}, "
                                             f"obj_price  = {price}, obj_adddate  = '{adddate}', obj_target  = '{target}', "
                                             f"obj_status = '{status}', obj_address = '{address}', obj_desc = '{desc}' WHERE obj_id = {id}")
-
 
             case "Guests":
                 id = self.ui.tb_guests_id.text()
@@ -602,6 +721,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
                 self.SendQueryWithoutAnswer(f"UPDATE {self.currentTable} SET gue_fullname = '{fullname}', "
                                             f"gue_phone = '{phone}', gue_blacklist = {blacklist} WHERE gue_id = {id}")
+
+            case "Impressions":
+                id = self.ui.tb_impressions_id.text()
+                dtime = self.ui.dtpicker_impressions_datetime.text()
+                object = self.ui.tb_imressions_object.text()
+                guest = self.ui.tb_impressions_guests.text()
+
+                if self.ui.cb_impressions_finished.isChecked() == True:
+                    finished = False
+                else: finished = True
+
+                self.SendQueryWithoutAnswer(f"UPDATE {self.currentTable} SET imp_datetime = '{dtime}', "
+                                            f"imp_object = {object}, imp_guest = {guest}, imp_finished = {finished} WHERE imp_id = {id}")
+
+
+
 
 
     def DeleteDataFromCurrentRow(self):
@@ -756,10 +891,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     v11 = Ui_Dialog.te_obj_address.text()
                     v12 = Ui_Dialog.te_obj_desc.toPlainText()
 
-
                     tmp_list = DataSets.TableWidgetContent.ObjectsC.copy()
 
-                    values = F"'{v1}', {v2}, '{v3}', '{v4}', {v5}, {v6}, {v7}, '{v8}', '{v9}', '{v10}', '{v11}', '{v12}', null"
+                    print(tmp_list)
+                    values = F"'{v1}', {v2}, '{v3}', '{v4}', {v5}, {v6}, {v7}, '{v8}', '{v9}', '{v10}', '{v11}', '{v12}'"
 
                     if (not v1 or not v2 or not v3 or not v4 or not v5 or not v6
                             or not v7 or not v8 or not v9 or not v10 or not v11):
@@ -769,8 +904,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
                     # Если доп.данные - отключено
-                    if Ui_Dialog.cb_obj_needAP.isChecked() == True:
-                        del tmp_list[12]
+                    if Ui_Dialog.cb_obj_needAP.isChecked() == False:
+                        del tmp_list[13]
                     else:
                         valuesAP = f"{Ui_Dialog.sp_obj_bathrooms.value()}, " if Ui_Dialog.sp_obj_bathrooms.value() else "null, "
                         valuesAP += f"{Ui_Dialog.sp_obj_floor.value()}, " if Ui_Dialog.sp_obj_floor.value() else "null, "
@@ -864,10 +999,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             column_list = ', '.join(tmp_list)
 
             sqlquery = F"INSERT INTO {self.currentTable}({column_list}) VALUES({values})"
+
+            print(sqlquery)
             self.SendQueryWithoutAnswer(sqlquery)
 
-        except(AttributeError):
-            pass
+        except(Exception):
+            return
+
+
 
     def ExportGuestContacts(self):
         """Копировать контактные данные гостя в буфер обмена"""
@@ -1013,11 +1152,52 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         app.exec()
 
-    def MakeReport(self):
+    def MakeReport(self, query):
         cur = self.connect_pg()
+        cur.execute(query)
+        res = cur.fetchall()
 
-        cur.execute('SELECT ')
+        wb = Workbook()
+        ws = wb.active
 
+        # Запись заголовков
+        columns = [desc[0] for desc in cur.description]
+        ws.append(columns)
+
+        for row in res:
+            ws.append(row)
+        # Запись данных
+        for column in ws.columns:
+            max_length = 0
+            for cell in column:
+                try:
+                    if len(str(cell.value)) > max_length:
+                        max_length = len(str(cell.value))
+                except:
+                    pass
+            adjusted_width = (max_length + 2) * 1.2
+            ws.column_dimensions[get_column_letter(column[0].column)].width = adjusted_width
+
+        # Сохранение файла
+        wb.save('Отчёт.xlsx')
+
+    def MakeReportDealsC(self):
+        date1 = self.ui.dtpicker_start.text()
+        date2 = self.ui.dtpicker_finish.text()
+        query = (f"SELECT cl_id, cl_lname, cl_fname, cl_patronymic, deal_id, obj_id, deal_date, deal_name, deal_type,"
+                 f" deal_object, deal_price, deal_csum, deal_status FROM Deals_c RIGHT JOIN Objects_c "
+                 f"ON Deals_c.deal_object = Objects_C.obj_id RIGHT JOIN Clients ON Clients.cl_id = Objects_c.obj_owner "
+                 f"WHERE deal_date > '{date1}' AND deal_date < '{date2}'")
+        self.MakeReport(query)
+
+    def MakeReportClientsProfit(self):
+        query = (f"SELECT SUM(sh_cost) AS SumOfServ, SUM(deal_csum) AS SymOfCsums, cl_id, cl_lname, deal_id, deal_date, "
+                 f"deal_name, deal_type, deal_object, deal_price, deal_csum, deal_status FROM Deals_c "
+                 f"RIGHT JOIN Objects_c ON Deals_c.deal_object = Objects_C.obj_id "
+                 f"RIGHT JOIN Clients ON Clients.cl_id = Objects_c.obj_owner "
+                 f"INNER JOIN ServicesHist ON Clients.cl_id = ServicesHist.sh_client "
+                 f"GROUP BY(cl_id, deal_id)")
+        self.MakeReport(query)
 
     def SendQueryWithoutAnswer(self, query):
         """Отправка запросов без ответа"""
@@ -1069,13 +1249,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def Show_Table(self, table):
         """Собрать записи и вывести их в tablewidget"""
+        """Собрать записи и вывести их в tablewidget"""
         try:
+            self.checkTodaysMeetings()
             self.checkTodaysImpressions()
-
             self.currentTable = table
             cur = self.connect_pg()
 
             self.sqlquery = F"SELECT * FROM {table}"
+
+
 
             cur.execute(self.sqlquery)
             result = cur.fetchall()
@@ -1086,6 +1269,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     self.ui.tableWidget_main.setItem(row_number, column_nmber, QTableWidgetItem(str(data)))
         except(AttributeError):
             return
+
 
 
     def connect_pg(self):
@@ -1138,7 +1322,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         msg.setText(F"{ErrorDesc}")
         msg.setIcon(QMessageBox.Icon.Critical)
         msg.exec()
-        returnval = msg.exec()
 
 
 

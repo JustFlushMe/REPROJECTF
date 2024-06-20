@@ -1,5 +1,4 @@
 dbname = 'redbv3'
 user = 'postgres'
-password = 'password'
 host = '172.17.0.2'
 port = '5432' 

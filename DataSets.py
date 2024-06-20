@@ -16,7 +16,7 @@ class TableWidgetContent:
     # Запросы
     Requests = ['req_id', 'req_client', 'req_details']
     # Объекты
-    Objects = ["obj_id", "obj_name", "obj_representative", "obj_second", "obj_type",
+    Objects = ["obj_id", "obj_name", "obj_owner", "obj_representative", "obj_second", "obj_type",
          "obj_dtype", "obj_square", "obj_rooms", "obj_price", "obj_address", "obj_desc", "obj_addpr"]
 
     # Представители

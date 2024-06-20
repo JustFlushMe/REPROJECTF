@@ -3,6 +3,10 @@ QDialog{
     color: rgb(250, 250, 250);
 }
 
+QDateTimeEdit{
+    qproperty-displayFormat: "yyyy-MM-dd HH:mm";
+}
+
 QDialogButtonBox QPushButton {
     background-color: #8e31ff;
     color: rgb(255, 255, 255);
